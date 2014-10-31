@@ -31,11 +31,10 @@ var getArtistData = function(tags) {
 
 	.done(function(result){
 
-		$.each(result.items, function(i, item) {
 			console.log("success");
-			var artist = showArtistInfo(item);
+			var artist = showArtistInfo(result);
 			$('.results').append(artist);
-		});
+
 	})
 
 	.fail(function(jqXHR, error, errorThrown){
@@ -44,15 +43,15 @@ var getArtistData = function(tags) {
 	});
 };
 
-var showArtistInfo = function(artist) {
+var showArtistInfo = function(result) {
 	
 	// clone our result template code
-	var result = $('.artistResults').clone();
-	
+	var results = $('.artistResults').clone();
+	console.log(result);
 	// set the views for artist property in result
-	var artistInfo = result.find('.biography');
-	artistInfo.text(artist.biographies);
-
+	var artistInfo = results.find('.biography');
+	console.log(artistInfo);
+	artistInfo.text();
 
 	return result;
 };
